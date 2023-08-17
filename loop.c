@@ -22,6 +22,7 @@ int main(int argc __attribute__((__unused__)), char **argv, char **envp)
 		{
 			exit(EXIT_SUCCESS);
 			free(input);
+			free(command);
 		}
 		if (read == -1)
 		{

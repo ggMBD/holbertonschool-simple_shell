@@ -28,6 +28,7 @@ char **tok(char *str)
 			if (!tokens)
 			{
 				perror("sh: allocation error");
+				free(token);
 				exit(EXIT_FAILURE);
 			}
 		}
