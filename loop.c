@@ -15,7 +15,8 @@ int main(int argc __attribute__((__unused__)), char **argv, char **envp)
 
 	while (1)
 	{
-		printf("$ ");
+		if(isatty(0))
+			printf("$ ");
 		read = getline(&input, &len, stdin);
 		if (!strcmp(input, "exit\n"))
 		{
