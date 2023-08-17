@@ -1,6 +1,6 @@
 #ifndef SHELL
 #define SHELL
-#include "main.h"
+#include "shell.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -12,8 +12,8 @@
 extern char **environ;
 #define MAX 100
 
-void rm_spaces(char *str);
-void executeCommand(char *command, char *f_n, char **envp, int cc);
+char **tok(char *str);
+void executeCommand(char **command, char *f_n, char **envp, int cc);
 
 
 

@@ -1,4 +1,4 @@
-#include "main.h"
+#include "shell.h"
 /**
  * main - simple shell
  * @argc: argument counter
@@ -9,9 +9,9 @@
 
 int main(int argc __attribute__((__unused__)), char **argv, char **envp)
 {
-	char *input = NULL;
+	char *input = NULL, **command;
 	size_t len;
-	int read, cc = 1;
+	int read, i, cc = 1;
 
 	while (1)
 	{
@@ -37,16 +37,15 @@ int main(int argc __attribute__((__unused__)), char **argv, char **envp)
 			break;
 			}
 		}
-
-		if (input[read - 1] == '\n')
-		{
-			input[read - 1] = '\0';
-		}
-		rm_spaces(input);
-		executeCommand(input, argv[0], envp, cc);
+		command = tok(input);
+		executeCommand(command, argv[0], envp, cc);
 		cc++;
 	}
-
+	for (i = 0; command[i] != NULL; i++)
+	{
+		free(command[i]);
+	}
+	free(command);
 	free(input);
 	return (0);
 }
