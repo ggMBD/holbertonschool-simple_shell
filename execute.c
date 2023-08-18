@@ -18,12 +18,11 @@ void executeCommand(char **command, char *f_n, char **envp, int cc)
 	if (pid == -1)
 	{
 		perror("fork fail");
-		free(command[0]);
 		exit(EXIT_FAILURE);
 	}
 	else if (pid == 0)
 	{
-		execve(command[0], command, NULL);
+		execve(command[0], command, envp);
 		path = strtok(getenv("PATH"), ":");
 		while (path)
 		{
@@ -36,12 +35,11 @@ void executeCommand(char **command, char *f_n, char **envp, int cc)
 			path = strtok(NULL, ":");
 		}
 		dprintf(STDERR_FILENO, "%s: %d: %s: not found\n", f_n, cc, command[0]);
-		free(command[0]);
+		free(path);
 		exit(EXIT_FAILURE);
 	}
 	else
 	{
 		wait(NULL);
-		free(command[0]);
 	}
 }

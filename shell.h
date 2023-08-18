@@ -11,10 +11,10 @@
 
 extern char **environ;
 #define MAX 100
-
+char *read_line(void);
 char **tok(char *str);
 void executeCommand(char **command, char *f_n, char **envp, int cc);
-
+void free_tokens(char **tokens);
 
 
 #endif
