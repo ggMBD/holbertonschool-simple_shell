@@ -9,16 +9,22 @@
 */
 char **tok(char *str)
 {
-	int bufsize = BUFSIZE, position = 0;
+	int bufsize = BUFSIZE, position = 0, i;
 	char **tokens = malloc(bufsize * sizeof(char *));
 	char *token;
 
 	if (!tokens)
 	{
 		perror("lsh: allocation error");
+		free(tokens);
 		exit(EXIT_FAILURE);
 	}
 	token = strtok(str, DELIM);
+	if(!token)
+	{
+		free(token);
+		exit(EXIT_FAILURE);
+	}
 	while (token != NULL)
 	{
 		if (position >= bufsize)
@@ -27,20 +33,24 @@ char **tok(char *str)
 			tokens = realloc(tokens, bufsize * sizeof(char *));
 			if (!tokens)
 			{
-				perror("sh: allocation error");
-				free(token);
+				perror("sh: reallocation error");
+				for (i = 0; tokens[i] != NULL; i++)
+				{
+					free(tokens[i]);
+				}
+				free(tokens);
 				exit(EXIT_FAILURE);
 			}
 		}
 		tokens[position] = strdup(token);
 		if (!tokens[position])
 		{
-		perror("sh: allocation error");
+		perror("sh: duplicate error");
 		exit(EXIT_FAILURE);
 		}
 		position++;
 		token = strtok(NULL, DELIM);
-		}
+	}
 	tokens[position] = NULL;
 	free(token);
 	return (tokens);

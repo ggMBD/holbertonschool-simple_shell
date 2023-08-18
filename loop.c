@@ -15,7 +15,7 @@ int main(int argc __attribute__((__unused__)), char **argv, char **envp)
 
 	while (1)
 	{
-		if(isatty(0))
+		if (isatty(0))
 			printf("$ ");
 		read = getline(&input, &len, stdin);
 		if (!strcmp(input, "exit\n"))
@@ -42,12 +42,10 @@ int main(int argc __attribute__((__unused__)), char **argv, char **envp)
 		command = tok(input);
 		executeCommand(command, argv[0], envp, cc);
 		cc++;
+		for (i = 0; command[i] != NULL; i++)
+			free(command[i]);
+		free(command);
+		free(input);
 	}
-	for (i = 0; command[i] != NULL; i++)
-	{
-		free(command[i]);
-	}
-	free(command);
-	free(input);
 	return (0);
 }
