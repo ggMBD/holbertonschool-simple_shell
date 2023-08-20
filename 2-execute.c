@@ -2,13 +2,13 @@
 /**
  * executeCommand - execute the command
  * @command: the command
- * @f_n: file name : argv[0]
+ * @file_name: file name : argv[0]
  * @envp: environ
  * @cc: commands counter
  * Return: void
 */
 
-void executeCommand(char **command, char *f_n, char **envp, int cc)
+void executeCommand(char **command, char *file_name, char **envp, int cc)
 {
 	pid_t pid;
 	char *path;
@@ -18,6 +18,7 @@ void executeCommand(char **command, char *f_n, char **envp, int cc)
 	if (pid == -1)
 	{
 		perror("fork fail");
+		free(command);
 		exit(EXIT_FAILURE);
 	}
 	else if (pid == 0)
@@ -34,8 +35,9 @@ void executeCommand(char **command, char *f_n, char **envp, int cc)
 			execve(executable_path, command, envp);
 			path = strtok(NULL, ":");
 		}
-		dprintf(STDERR_FILENO, "%s: %d: %s: not found\n", f_n, cc, command[0]);
+		dprintf(STDERR_FILENO, "%s: %d: %s: not found\n", file_name, cc, command[0]);
 		free(path);
+		free_double_pointer(command);
 		exit(EXIT_FAILURE);
 	}
 	else

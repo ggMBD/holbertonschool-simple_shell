@@ -1,15 +1,15 @@
 #include "shell.h"
 /**
- * free_tokens - function free free tokens
- * @tokens: tokens to free
+ * free_double_pointer - function free pointer
+ * @pointer: pointer to free
 */
-void free_tokens(char **tokens)
+void free_double_pointer(char **pointer)
 {
 	int i;
 
-	for (i = 0; tokens[i] != NULL; i++)
+	for (i = 0; pointer[i] != NULL; i++)
 	{
-		free(tokens[i]);
+		free(pointer[i]);
 	}
-	free(tokens);
+	free(pointer);
 }

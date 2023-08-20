@@ -7,14 +7,14 @@
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/wait.h>
-#include <fcntl.h>
-
+#define clear() printf("\033[H\033[J")
 extern char **environ;
 #define MAX 100
+int allowed(char *command);
 char *read_line(void);
 char **tok(char *str);
 void executeCommand(char **command, char *f_n, char **envp, int cc);
-void free_tokens(char **tokens);
+void free_double_pointer(char **tokens);
 
 
 #endif

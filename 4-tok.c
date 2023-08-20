@@ -16,6 +16,7 @@ char **tok(char *str)
 	if (!tokens)
 	{
 		perror("lsh: allocation error");
+		free(str);
 		exit(EXIT_FAILURE);
 	}
 	token = strtok(str, DELIM);
@@ -28,7 +29,8 @@ char **tok(char *str)
 			if (!tokens)
 			{
 				perror("sh: reallocation error");
-				free_tokens(tokens);
+				free_double_pointer(tokens);
+				free(str);
 				exit(EXIT_FAILURE);
 			}
 		}
@@ -36,12 +38,14 @@ char **tok(char *str)
 		if (!tokens[position])
 		{
 		perror("sh: duplicate error");
-		free_tokens(tokens);
+		free(str);
+		free_double_pointer(tokens);
 		exit(EXIT_FAILURE);
 		}
 		position++;
 		token = strtok(NULL, DELIM);
 	}
 	tokens[position] = NULL;
+	free(str);
 	return (tokens);
 }

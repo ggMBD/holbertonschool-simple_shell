@@ -6,23 +6,20 @@
 char *read_line(void)
 {
 	char *line = NULL;
-	int read;
+	int byte_read;
 	size_t len = 0;
 
-	read = getline(&line, &len, stdin);
-	if (read == -1)
+	byte_read = getline(&line, &len, stdin);
+	if (feof(stdin))
 	{
-		if (feof(stdin))
-		{
-			free(line);
-			exit(EXIT_SUCCESS);
-		}
-		else
-		{
-			perror("error readline");
-			free(line);
-			exit(EXIT_FAILURE);
-		}
+		free(line);
+		exit(EXIT_SUCCESS);
+	}
+	if (byte_read == -1)
+	{
+		perror("error readline");
+		free(line);
+		exit(EXIT_FAILURE);
 	}
 	if (strcmp(line, "exit\n") == 0)
 	{
