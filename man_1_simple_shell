@@ -24,7 +24,7 @@ Lists fils and direcories.
 
 .TP
 .B pwd
-Print the urrent working directory.
+Prints the current working directory.
 
 .TP
 .B env
@@ -36,7 +36,7 @@ Move (rename) a file.
 
 .TP
 .B rm \fIFILE\fR
-Remoove (delete) a ffile.
+Remove (delete) a ffile.
 
 .SH USAGE
 To use \fBhsh\fR, run it from the command line. It provides an interactive shell where you can enter commands. Type "exit" to exit the shell.
@@ -45,4 +45,4 @@ To use \fBhsh\fR, run it from the command line. It provides an interactive shell
 Written by Souhaieb Jebali, Maouia Ben Daoued, Hakim Boouharb.
 
 .SH REPORTING BUGS
-Report bugs to maouiabend@gmail.com.
+Report bugs to maouiabend@gmail.com  souhaiebjebali@gmail.com
