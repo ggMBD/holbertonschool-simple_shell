@@ -1,0 +1,48 @@
+.TH HSH 1 "August 2023" "souhaieb Jebali, Maouia Ben Daoued, Hakim Bouharb"
+.SH - Simple Shell
+
+.SH Synopsis
+.B hsh
+
+.SH DESCRIPTION
+\fBhsh\fR is a simple shell progra that provides a basic command-line inerface for executing commands.It reads commands from the standard input, executes them, and displays the results.
+
+sh COMMANDS
+\fBhsh\fR supports the following built-in commands:
+
+.TP
+.B exit
+Exit the shell.
+
+.TP
+.B cd \fIDIRECTORY\fR
+Change the current working directory.
+
+.TP
+.B ls
+Lists fils and direcories.
+
+.TP
+.B pwd
+Print the urrent working directory.
+
+.TP
+.B env
+Display environment variables.
+
+.TP
+.B mv \fIFILE1 FILE2\fR
+Move (rename) a file.
+
+.TP
+.B rm \fIFILE\fR
+Remoove (delete) a ffile.
+
+.SH USAGE
+To use \fBhsh\fR, run it from the command line. It provides an interactive shell where you can enter commands. Type "exit" to exit the shell.
+
+.SH AUTHOR
+Written by Souhaieb Jebali, Maouia Ben Daoued, Hakim Boouharb.
+
+.SH REPORTING BUGS
+Report bugs to maouiabend@gmail.com.
