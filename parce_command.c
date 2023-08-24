@@ -23,7 +23,7 @@ char **parse_cmd(char *input)
 	argument = strtok(input, DELIMITER);
 	for (i = 0; argument; i++)
 	{
-		arguments[i] = strdup(argument);;
+		arguments[i] = strdup(argument);
 		argument = strtok(NULL, DELIMITER);
 	}
 	arguments[i] = NULL;
