@@ -24,6 +24,7 @@ char **parse_cmd(char *input);
 int check_cmd(char **cmd, int c, char **argv);
 int path_cmd(char **cmd);
 char *build(char *token, char *value);
+char *_getenv(char *name);
 char *_itoa(unsigned int n);
 void array_rev(char *arr, int len);
 int intlen(int num);

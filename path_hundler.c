@@ -10,7 +10,7 @@ int path_cmd(char **cmd)
 	char *path, *value, *cmd_path;
 	struct stat buf;
 
-	path = getenv("PATH");
+	path = _getenv("PATH");
 	value = strtok(path, ":");
 	while (value != NULL)
 	{
@@ -53,4 +53,41 @@ char *build(char *token, char *value)
 	snprintf(cmd, len, "%s/%s", value, token);
 
 	return (cmd);
+}
+/**
+ * _getenv - Gets the value of environment variable by name
+ * @name: Environment variable name
+ * Return: The value of the environment variable or NULL if failed
+ */
+char *_getenv(char *name)
+{
+	size_t name_len, value_len;
+	char *value;
+	int i, j, k;
+
+	name_len = strlen(name);
+	for (i = 0 ; environ[i]; i++)
+	{
+		if (strncmp(name, environ[i], name_len) == 0)
+		{
+			value_len = strlen(environ[i]) - name_len;
+			value = malloc(sizeof(char) * value_len);
+			if (!value)
+			{
+				free(value);
+				perror("unable to alloc");
+				return (NULL);
+			}
+
+			j = 0;
+			for (k = name_len + 1; environ[i][k]; k++, j++)
+			{
+				value[j] = environ[i][k];
+			}
+			value[j] = '\0';
+
+			return (value);
+		}
+	}
+	return (NULL);
 }
