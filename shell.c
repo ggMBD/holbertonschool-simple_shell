@@ -4,7 +4,7 @@
 *@argc: arguments count
 *@argv: arguments vector.
 *
-*Return : Returns condition.
+*Return:Returns condition.
 */
 int main(__attribute__((unused)) int argc, char **argv)
 {
