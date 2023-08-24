@@ -6,6 +6,7 @@
 #include <string.h>
 #include <unistd.h>
 #include <sys/types.h>
+#include <sys/stat.h>
 #include <sys/wait.h>
 
 #define PRINT(c) (write(STDERR_FILENO, c, strlen(c)))
@@ -23,7 +24,6 @@ char **parse_cmd(char *input);
 int check_cmd(char **cmd, int c, char **argv);
 int path_cmd(char **cmd);
 char *build(char *token, char *value);
-char *_getenv(char *name);
 char *_itoa(unsigned int n);
 void array_rev(char *arr, int len);
 int intlen(int num);
