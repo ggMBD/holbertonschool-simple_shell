@@ -14,9 +14,7 @@ sh COMMANDS
 .B exit
 Exit the shell.
 
-.TP
-.B cd \fIDIRECTORY\fR
-Change the current working directory.
+
 
 .TP
 .B ls
