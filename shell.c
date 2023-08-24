@@ -11,6 +11,7 @@ int main(__attribute__((unused)) int argc, char **argv)
 	char *input, **cmd;
 	int count = 0, condition = 1, stat = 0;
 
+	signal(SIGINT, signal_handler);
 	while (condition)
 	{
 		count++;

@@ -8,6 +8,8 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <sys/wait.h>
+#include <signal.h>
+
 
 #define PRINT(c) (write(STDERR_FILENO, c, strlen(c)))
 #define BUFSIZE 1024
@@ -17,7 +19,7 @@
 
 extern char **environ;
 
-
+void signal_handler(int signum);
 void prompt(void);
 char *read_line(void);
 char **parse_cmd(char *input);
