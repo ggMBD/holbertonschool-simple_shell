@@ -21,7 +21,7 @@ int check_cmd(char **cmd, int c, char **argv)
 	}
 	if (pid == 0)
 	{
-		if (strncmp(*cmd, "./", 2) != 0 && strncmp(*cmd, "/", 1) != 0)
+		if (strncmp(*cmd, "/", 1) != 0)
 			path_cmd(cmd);
 		if (access(cmd[0], R_OK) != 0)
 		{
