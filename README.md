@@ -56,11 +56,11 @@ The Holberton Simple Shell Project is an educational endeavor to learn about ope
 
 2. Navigate to the project directory:
    ```c
-   cd simple_shell
+   cd holbertonschool-simple_shell
 3. Compile the shell program:
   
    ```c
-   gcc -o hsh *.c
+   gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
   
 4. Run the shell:
    ```c
@@ -72,58 +72,29 @@ You'll be greeted by the custom shell prompt. Enter commands and press Enter to 
 
 Here are a few snippets that demonstrate how some of the supported commands are implemented in our Simple Shell:
 
-### `ls` Command
+### `env` Command
 
 ```c
 #include "shell.h"
 
 /**
- * execute_ls - Execute the "ls" command.
+ * execute_ls - print the "env" in stdout.
  */
-void execute_ls(void)
+void _env(void)
 {
-    pid_t child_pid = fork();
-    if (child_pid == 0)
-    {
-        /* Child process */
-        execl("/bin/ls", "ls", NULL);
-        perror("ls");
-        exit(EXIT_FAILURE);
-    }
-    else if (child_pid < 0)
-    {
-        perror("fork");
-    }
-    else
-    {
-        /* Parent process */
-        wait(NULL);
-    }
-} 
+	int i;
+
+	for (i = 0; environ[i] != NULL; i++)
+	{
+		printf("%s\n", environ[i]);
+	}
+}
 ```
 
-### `cd` Command
-```c
-
-#include "shell.h"
-
-/**
- * execute_cd - Execute the "cd" command.
- * @path: The path to change to.
- */
-void execute_cd(char *path)
-{
-    if (chdir(path) == -1)
-    {
-        perror("cd");
-    }
-} 
-```
 # Supported Commands
 ## The Holberton Simple Shell Project supports the following commands:
 
 - ***ls:*** List files and directories in the current directory.
-- ***cd:*** Change the current directory.
 - ***pwd:*** Print the current working directory.
 - **echo:** Display a message on the screen.
 - **exit:** Exit the shell.

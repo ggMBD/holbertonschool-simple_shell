@@ -15,7 +15,6 @@
 #define BUFSIZE 1024
 #define DELIMITER " \t\n"
 #define clear() printf("\033[H\033[J")
-#define MAX 100
 
 extern char **environ;
 
